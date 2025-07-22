@@ -1,0 +1,37 @@
+import streamlit as st
+
+st.title("🌿 Skincare Buddy")
+
+# Sidebar
+st.sidebar.header("Navigation")
+page = st.sidebar.selectbox("Choose a page:", ["Home", "Skin Type Quiz", "Routine Tracker", "AI Chatbot"])
+
+if page == "Home":
+    st.write("Welcome to Skincare Buddy! Your personal skin advisor.")
+    st.image("skincare_banner.jpg")  # Optional banner image
+    st.write("Choose an option from the sidebar to get started.")
+
+elif page == "Skin Type Quiz":
+    st.subheader("🧪 Find Your Skin Type")
+    # Add a simple quiz here
+    q1 = st.radio("How does your skin feel after washing?", ["Tight", "Normal", "Oily"])
+    # More questions...
+    if st.button("Get Result"):
+        # Basic logic to guess skin type
+        st.success("Your skin type is: Combination")
+
+elif page == "Routine Tracker":
+    st.subheader("📅 Your Daily Routine")
+    # Input products used
+    morning = st.text_input("Morning Routine")
+    night = st.text_input("Night Routine")
+    if st.button("Save Routine"):
+        st.success("Routine saved!")
+
+elif page == "AI Chatbot":
+    st.subheader("💬 Ask our Skincare AI")
+    prompt = st.chat_input("Ask anything about skincare")
+    if prompt:
+        response = "Example answer from Gemini"  # Replace with real Gemini call
+        st.chat_message("user").write(prompt)
+        st.chat_message("assistant").write(response)
